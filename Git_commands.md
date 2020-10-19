@@ -1,7 +1,7 @@
 <!--
  * @Author: Ciyuan Yu
  * @Date: 2020-09-25 11:37:01
- * @LastEditTime: 2020-09-29 16:23:10
+ * @LastEditTime: 2020-10-19 17:27:06
  * @LastEditors: Please set LastEditors
  * @Description: Notes of Git commands
 -->
@@ -53,3 +53,23 @@ $ git merge --abort
 $ git merge <server name> <branch>
 
 $ git show <id>
+
+# 两个分支merge到同一个repo
+git reset <index>   //剔除不必要的文件
+git status          //再次检查git管理的文件，必要时编辑.gitignore
+mv client2 client   //文件夹更名，与GitHub中目标文件夹一致
+git add client/src  //添加需要提交的文件
+git add client/public
+git add client/package.json
+git commit -m "add material-ui"
+git log             //回顾下提交历史
+git push origin feature/client2 --force     //强制提交
+
+# 将远程分支设置为本地分支的上游分支
+git branch -vv  //查看本地分支与远程分支的对应关系
+git branch --set-upstream-to=<remote branch> <local branch>     //将远程分支设置为本地分支的upstream
+git pull        //将远程分支的内容拉下来并merge到当前本地分支中
+git branch --unset-upstream <local branch>  //撤销本地分支与远程分支的映射关系
+
+# git push
+git push的一般形式为 git push <远程主机名> <本地分支名>:<远程分支名> 
